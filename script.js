@@ -2,8 +2,8 @@ const list = document.querySelector('ul');
 const addItem = document.querySelector('button');
 const enterItem = document.querySelector('input');
 
-// event for adding item to list when clicking the button
-addItem.onclick = () => {
+// function to add item to list
+let addNewItem = () => {
     // variables for each list item
     let listItem = document.createElement('li');
     let listSpan = document.createElement('span');
@@ -25,4 +25,15 @@ addItem.onclick = () => {
     listButton.onclick = () => {
         list.removeChild(listItem);
     }
-};
+
+    // focus back on the input
+    enterItem.focus();
+}
+// event for adding item to list when clicking the button
+addItem.addEventListener('click', addNewItem);
+
+enterItem.addEventListener('keydown', function(e) {
+    if(e.key === 'Enter') {
+        addNewItem();
+    };
+});
